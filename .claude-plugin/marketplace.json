@@ -1,0 +1,12 @@
+{
+  "name": "letsautomate",
+  "owner": { "name": "let's automate GmbH", "email": "andre.zumsteg@letsautomate.ch" },
+  "metadata": { "description": "Interne Claude-Code-Plugins von let's automate" },
+  "plugins": [
+    {
+      "name": "agentenzeit",
+      "source": "./plugins/agentenzeit",
+      "description": "Misst die aktive Laufzeit von Claude Code und meldet sie über McpConnect als Agentenzeit auf die Aufgabe in LaInvoicing."
+    }
+  ]
+}

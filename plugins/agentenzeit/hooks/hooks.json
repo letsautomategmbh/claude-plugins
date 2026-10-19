@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [ { "type": "command", "command": "/usr/bin/perl \"${CLAUDE_PLUGIN_ROOT}/scripts/agentenzeit.pl\" prompt", "timeout": 10 } ] }
+    ],
+    "Notification": [
+      { "matcher": "permission_prompt", "hooks": [ { "type": "command", "command": "/usr/bin/perl \"${CLAUDE_PLUGIN_ROOT}/scripts/agentenzeit.pl\" warten", "timeout": 5 } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": ".*invoicing_agent_time_log", "hooks": [ { "type": "command", "command": "/usr/bin/perl \"${CLAUDE_PLUGIN_ROOT}/scripts/agentenzeit.pl\" gemeldet", "timeout": 5 } ] }
+    ]
+  }
+}
