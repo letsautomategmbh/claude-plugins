@@ -13,7 +13,7 @@ claude plugin marketplace add letsautomategmbh/claude-plugins
 claude plugin install agentenzeit@letsautomate
 ```
 
-Das Repo ist privat. Die Person braucht Lesezugriff auf GitHub und eine Anmeldung über `gh auth login` und `gh auth setup-git`. Claude Code bringt kein eigenes Token mit.
+Das Repo ist öffentlich (seit 22.10.2026), es braucht also weder ein GitHub-Konto noch eine Anmeldung. Es enthält nur das Messskript, die Hooks und Texte, keine Zugangsdaten: angemeldet wird jede Person selbst über die MCP-Verbindung zu FreeScout.
 
 ## Für alle Mitarbeitenden (verwaltete Einstellungen)
 
