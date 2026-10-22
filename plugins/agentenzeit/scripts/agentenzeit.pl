@@ -70,7 +70,7 @@ sub lade {
     my $f = datei($id);
     my $z;
     if (open my $fh, '<', $f) { local $/; $z = eval { $JSON->decode(<$fh>) }; close $fh }
-    $z ||= {};
+    $z ||= { neu => 1 };      # noch nie gesehene Sitzung
     $z->{pos} //= 0;          # gelesene Bytes des Protokolls
     $z->{offen} //= 0;        # gemessene, noch nicht gemeldete Sekunden
     $z->{warten} //= [];      # Zeitpunkte offener Freigabe-Dialoge
@@ -169,6 +169,15 @@ sub prompt {
     my $h = shift;
     my $id = $h->{session_id} // return;
     my $z = lade($id);
+    # Eine Sitzung, die das Plugin zum ersten Mal sieht, wird ab jetzt
+    # gemessen, nicht ab ihrem Anfang: wer das Plugin mitten in einer langen
+    # Sitzung bekommt (Installation, Verteilung ans Team), hätte sonst die
+    # ganze Zeit davor auf der ersten Aufgabe (0.1.1, gemessen: 671 min).
+    if (delete $z->{neu}) {
+        my $p = $h->{transcript_path};
+        $z->{pos} = ($p && -f $p) ? (-s $p) : 0;
+        $z->{letzt} = time;
+    }
     messe($z, $h->{transcript_path});
 
     my @hinweis;
