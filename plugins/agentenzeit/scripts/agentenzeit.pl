@@ -183,6 +183,15 @@ sub prompt {
     my @hinweis;
     my $eingabe = $h->{prompt} // '';
 
+    # /agentenzeit: Stand dieser Sitzung (0.1.2)
+    if ($eingabe =~ m{^\s*/(?:agentenzeit:)?agentenzeit\s*$}i) {
+        my $aufg = $z->{aufgabe} && $z->{aufgabe} ne 'KEINE' ? $z->{aufgabe} : undef;
+        push @hinweis, sprintf('Agentenzeit (nur diese Sitzung): Aufgabe %s; gemessen, noch nicht gemeldet: %d min; in dieser Sitzung gemeldet: %d min. Nenne das dem Menschen in zwei, drei kurzen Zeilen.%s',
+            $aufg // (($z->{aufgabe} // '') eq 'KEINE' ? 'keine (Melden ausgeschaltet)' : 'noch keine gesetzt'),
+            int(($z->{offen} // 0) / 60 + 0.5), int(($z->{gemeldet_total} // 0) / 60 + 0.5),
+            $aufg ? " Falls der Mensch die Summe über alle Sitzungen wissen will: mit invoicing_task_get (bzw. invoicing_project_get) nachsehen, was auf $aufg als Agentenzeit gebucht ist." : '');
+    }
+
     # /aufgabe A123 | P12 | T4711 | keine
     if ($eingabe =~ m{^\s*/(?:agentenzeit:)?aufgabe\b\s*(\S*)}i) {
         my $ziel = uc($1 // '');

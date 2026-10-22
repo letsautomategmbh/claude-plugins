@@ -10,6 +10,7 @@ Misst, wie lange Claude Code auf diesem Rechner aktiv gearbeitet hat. Die Zeit w
 /aufgabe T4711     Ticket 4711 (wird nur protokolliert, nie verrechnet)
 /aufgabe keine     ab jetzt nichts melden
 /aufgabe           zeigt die aktuelle Aufgabe
+/agentenzeit       zeigt Aufgabe, gemessene und gemeldete Minuten dieser Sitzung
 ```
 
 Ab einer gesetzten Aufgabe bietet das Plugin dem Agenten die gemessene Zeit zum Melden an, sobald 10 Minuten zusammengekommen sind oder die letzte Meldung über eine Stunde zurückliegt. Der Agent meldet sie mit `invoicing_agent_time_log` und bestätigt das in einer Zeile. Beim Wechsel der Aufgabe wird die offene Zeit zuerst der bisherigen Aufgabe gemeldet. Zeit, die vor dem ersten `/aufgabe` anfiel, geht auf die erste gesetzte Aufgabe.
