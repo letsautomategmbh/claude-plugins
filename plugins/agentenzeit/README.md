@@ -15,6 +15,16 @@ Misst, wie lange Claude Code auf diesem Rechner aktiv gearbeitet hat. Die Zeit w
 
 Ab einer gesetzten Aufgabe bietet das Plugin dem Agenten die gemessene Zeit zum Melden an, sobald 10 Minuten zusammengekommen sind oder die letzte Meldung über eine Stunde zurückliegt. Der Agent meldet sie mit `invoicing_agent_time_log` und bestätigt das in einer Zeile. Beim Wechsel der Aufgabe wird die offene Zeit zuerst der bisherigen Aufgabe gemeldet. Zeit, die vor dem ersten `/aufgabe` anfiel, geht auf die erste gesetzte Aufgabe.
 
+## Die Leiste über dem Eingabefeld (0.2.0)
+
+Über dem Eingabefeld steht der Stand der Sitzung: `⏱ Agentenzeit: A123 · 12 min offen · 30 min gemeldet`. Die Knöpfe:
+
+- **Aufgabe setzen / wechseln** schreibt `/aufgabe ` ins Eingabefeld; Nummer ergänzen, Enter.
+- **Aus** führt `/aufgabe keine` aus.
+- **–** blendet die Leiste für diese Sitzung aus; der Stand bleibt in der Statuszeile.
+
+Die Leiste liest nur, was das Messskript je Sitzung ablegt, und frischt sich nach jedem Zug und jede Minute auf. Gemessen und gemeldet wird allein im Skript.
+
 ## Was gemessen wird
 
 - **Es zählt nur die aktive Zeit:** von Deiner Eingabe bis zur Antwort des Agenten, einschliesslich laufender Werkzeuge und Unteragenten.
