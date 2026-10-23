@@ -7,7 +7,7 @@ Misst, wie lange Claude Code auf diesem Rechner aktiv gearbeitet hat. Die Zeit w
 ```
 /aufgabe A123      Aufgabe A123
 /aufgabe P12       Projekt P12
-/aufgabe T4711     Ticket 4711 (wird nur protokolliert, nie verrechnet)
+/aufgabe T4711     Ticket 4711 (verrechnet, wenn der Standard es erlaubt)
 /aufgabe keine     ab jetzt nichts melden
 /aufgabe           zeigt die aktuelle Aufgabe
 /agentenzeit       zeigt Aufgabe, gemessene und gemeldete Minuten dieser Sitzung
@@ -31,7 +31,7 @@ Die Leiste liest nur, was das Messskript je Sitzung ablegt, und frischt sich nac
 - **Unteragenten zählen nur einmal,** über die Wartezeit der Hauptsitzung (Entscheid vom 19.10.2026).
 - **Grenzen:** höchstens 30 min für eine Lücke vor einer Antwort, 4 h vor einem Werkzeugergebnis und 30 min vor einer Meldung aus dem Hintergrund.
 
-Ob die Zeit verrechnet wird, entscheidet LaInvoicing. Massgebend ist der Schalter «Agentenzeit verrechnen» am Projekt oder an der Aufgabe, ab Werk steht er auf nein. Agentenzeit zählt nie als Arbeitszeit.
+Ob die Zeit verrechnet wird, entscheidet LaInvoicing. Massgebend ist der Schalter «Agentenzeit verrechnen»: zuerst an der Aufgabe, sonst am Projekt, sonst der Standard in den Einstellungen (dort folgen auch Tickets). Ab Werk steht der Standard auf nein. Agentenzeit zählt nie als Arbeitszeit.
 
 ## Voraussetzungen
 

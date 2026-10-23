@@ -17,5 +17,5 @@ Das Plugin misst auf diesem Rechner, wie lange Du als Agent aktiv gearbeitet has
 
 ## Was der Server tut
 
-- Ob Agentenzeit verrechnet wird, entscheidet der Schalter «Agentenzeit verrechnen» am Projekt oder an der Aufgabe. Ab Werk steht er auf nein, Tickets verrechnen nie. Ohne Freigabe wird die Zeit nur protokolliert.
+- Ob Agentenzeit verrechnet wird, entscheidet der Schalter «Agentenzeit verrechnen»: zuerst an der Aufgabe, sonst am Projekt, sonst der Standard in den Einstellungen von LaInvoicing. Tickets folgen dem Standard. Ab Werk steht der Standard auf nein. Ohne Freigabe wird die Zeit nur protokolliert.
 - Je Person, Gegenstand und Tag sammelt ein Zeiteintrag mit dem Kennzeichen «Agent» alle Meldungen. Er erscheint auf der Rechnung, zählt aber nie als Arbeitszeit der Person.
