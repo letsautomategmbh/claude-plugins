@@ -40,6 +40,15 @@ Ob die Zeit verrechnet wird, entscheidet LaInvoicing. Massgebend ist der Schalte
 2. **Verbindung zu McpConnect** (support.letsautomate.ch) in Claude Code mit Deinem eigenen FreeScout-Konto. Diesem Zugang muss der Scope **`agenttime:write`** («Agentenzeit melden») erlaubt sein. Zum Prüfen der Aufgabe braucht es zusätzlich `tasks:read`.
 3. **In LaInvoicing unter Verwalten → Aktivitäten → Zeiterfassung** ist die «Leistung für Agentenzeit» gesetzt. Ohne sie bucht der Server nichts.
 
+## Einmal anmelden
+
+Das Plugin bringt die Verbindung zu FreeScout mit (`plugin:agentenzeit:letsautomate`). Jede Person meldet sich einmal an:
+
+- **Desktop-App:** Reiter «Code», einen Projektordner wählen, `/mcp` eintippen, «plugin:agentenzeit:letsautomate» → «Authenticate».
+- **Terminal:** `claude mcp login "plugin:agentenzeit:letsautomate"` (aus jedem Ordner).
+
+Im Browser mit dem FreeScout-Konto anmelden und «Zulassen» klicken, **zügig**: Claude Code wartet nur kurz auf die Antwort. Läuft es ab, «Authenticate» noch einmal starten.
+
 ## Installieren
 
 ```bash
