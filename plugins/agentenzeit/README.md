@@ -21,7 +21,7 @@ Ab einer gesetzten Aufgabe bietet das Plugin dem Agenten die gemessene Zeit zum 
 
 - **Aufgabe setzen / wechseln** schreibt `/aufgabe ` ins Eingabefeld; Nummer ergänzen, Enter.
 - **Aus** führt `/aufgabe keine` aus.
-- **–** blendet die Leiste für diese Sitzung aus; der Stand bleibt in der Statuszeile.
+- **–** blendet die Leiste aus; `/agentenzeit` holt sie zurück. Der Stand bleibt in der Statuszeile.
 
 Die Leiste liest nur, was das Messskript je Sitzung ablegt, und frischt sich nach jedem Zug und jede Minute auf. Gemessen und gemeldet wird allein im Skript.
 

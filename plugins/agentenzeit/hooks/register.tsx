@@ -46,6 +46,14 @@ export const register: Register = on => {
     return r
   })
 
+  // /agentenzeit holt eine mit «–» ausgeblendete Leiste zurück (0.2.2).
+  on('prompt.submit', async ($, e, next) => {
+    if (/^\s*\/(?:agentenzeit:)?agentenzeit\s*$/i.test(e.text ?? '')) {
+      await update($, zu, () => false)
+    }
+    return next(e)
+  })
+
   // Der Zustand ändert sich, wenn das Plugin bei einer Eingabe misst oder
   // eine Meldung verbucht: nach jedem Zug neu lesen.
   on('turn.complete', async ($, e, next) => {
@@ -69,7 +77,7 @@ export const register: Register = on => {
         {s.aus ? null : (
           <Button key="aus" label="Aus" onPress={() => $.command.run({ command: 'aufgabe keine' })} />
         )}
-        <Button key="zu" label="–" onPress={() => update($, zu, () => true)} />
+        <Button key="zu" label="– (zurück mit /agentenzeit)" onPress={() => update($, zu, () => true)} />
       </Box>
     )
   })
