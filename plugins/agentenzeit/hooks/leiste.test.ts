@@ -42,15 +42,3 @@ test('ausgeschaltet: «aus» und kein Knopf zum Ausschalten', async ($, on) => {
   expect(JSON.stringify(await ui.drawn())).toContain('Agentenzeit: aus')
   expect(await ui.find({ key: 'aus' })).toBeUndefined()
 })
-
-test('«–» blendet aus, /agentenzeit holt die Leiste zurück', async ($, on) => {
-  zustand(on, { aufgabe: 'A7', offen: 60 })
-  on('prompt.submit', async (_$, e) => ({ text: e.text }) as never)
-  await $.session.start({ cwd: '/tmp', surface: 'terminal', isInteractive: true })
-  const ui = await $.ui.mount({ plugin: 'agentenzeit', surface: 'terminal', component: 'AbovePrompt', props: { hasSurvey: false } as never })
-  await ui.press({ key: 'zu' })
-  expect(await ui.find({ key: 'aus' })).toBeUndefined()
-  await $.prompt.submit({ text: '/agentenzeit' } as never)
-  expect(await ui.find({ key: 'aus' })).toBeDefined()
-})
-

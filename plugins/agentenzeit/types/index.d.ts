@@ -7,6 +7,6 @@ export type Stand = {
 
 declare module 'claude-code' {
   interface PluginState {
-    'agentenzeit': { stand: Stand | null; zu: boolean }
+    'agentenzeit': { stand: Stand | null }
   }
 }

@@ -7,7 +7,6 @@ import type { Stand } from '../types'
 // (~/.claude/plugins/data/agentenzeit-letsautomate/sitzungen/<id>.json).
 // Gemessen und gemeldet wird nur dort; die Leiste zeigt und schaltet.
 const stand = atom({ plugin: 'agentenzeit', key: 'stand' } as const, null)
-const zu = atom({ plugin: 'agentenzeit', key: 'zu' } as const, false)
 
 async function laden($: EngineInterface): Promise<Stand | null> {
   const home = await $.env.get('HOME')
@@ -46,14 +45,6 @@ export const register: Register = on => {
     return r
   })
 
-  // /agentenzeit holt eine mit «–» ausgeblendete Leiste zurück (0.2.2).
-  on('prompt.submit', async ($, e, next) => {
-    if (/^\s*\/(?:agentenzeit:)?agentenzeit\s*$/i.test(e.text ?? '')) {
-      await update($, zu, () => false)
-    }
-    return next(e)
-  })
-
   // Der Zustand ändert sich, wenn das Plugin bei einer Eingabe misst oder
   // eine Meldung verbucht: nach jedem Zug neu lesen.
   on('turn.complete', async ($, e, next) => {
@@ -64,7 +55,7 @@ export const register: Register = on => {
 
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     const s = await read($, stand)
-    if (e.props.hasSurvey || s === null || (await read($, zu))) {
+    if (e.props.hasSurvey || s === null) {
       return next(e)
     }
     const { Box, Button, Text } = $.ui.resolve(e)
@@ -77,7 +68,6 @@ export const register: Register = on => {
         {s.aus ? null : (
           <Button key="aus" label="Aus" onPress={() => $.command.run({ command: 'aufgabe keine' })} />
         )}
-        <Button key="zu" label="– (zurück mit /agentenzeit)" onPress={() => update($, zu, () => true)} />
       </Box>
     )
   })
