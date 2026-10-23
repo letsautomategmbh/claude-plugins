@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "letsautomate": {
+      "type": "http",
+      "url": "https://support.letsautomate.ch/mcp",
+      "oauth": { "callbackPort": 33418, "scopes": "agenttime:write tasks:read" }
+    }
+  }
+}

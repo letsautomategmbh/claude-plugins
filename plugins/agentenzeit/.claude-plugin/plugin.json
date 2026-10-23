@@ -1,6 +1,6 @@
 {
   "name": "agentenzeit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Misst die aktive Laufzeit von Claude Code und meldet sie über McpConnect als Agentenzeit auf Aufgaben und Projekte in LaInvoicing.",
   "author": {
     "name": "let's automate GmbH",
